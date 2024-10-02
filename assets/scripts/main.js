@@ -1,9 +1,26 @@
+const filters = document.querySelector(".filters")
 const gallery = document.querySelector(".gallery")
 const works = "http://localhost:5678/api/works"
+const categories = "http://localhost:5678/api/categories"
 
 
 
-function getWorksData() {
+function portfolioFilters() {
+    const filterAll = document.createElement("button")
+    filters.appendChild(filterAll)
+    filterAll.innerText = "Tous"
+    fetch(categories).then((response) => {
+        response.json().then((data) => {
+            data.forEach(e => {
+                const newFilter = document.createElement("button")
+                filters.appendChild(newFilter)
+                newFilter.innerText = e.name
+            })
+        })
+    })
+}
+
+function portfolioGallery() {
     fetch(works).then((response) => {
         response.json().then((data) => {
             data.forEach(e => {
@@ -12,7 +29,7 @@ function getWorksData() {
                 const NewCaption = document.createElement("figcaption")
                 gallery.appendChild(newFigure)
                 newFigure.appendChild(newImage)
-                newFigure.appendChild(NewCaption) 
+                newFigure.appendChild(NewCaption)
                 newImage.src = e.imageUrl
                 NewCaption.innerHTML = e.title
             })
@@ -20,8 +37,8 @@ function getWorksData() {
     })
 }
 
-
-getWorksData()
+portfolioFilters()
+portfolioGallery()
 
 
 
