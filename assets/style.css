@@ -309,7 +309,16 @@ footer nav ul {
 	min-width: 100px;
 }
 
+.button:hover {
+	background: rgb(29, 97, 84, 0.15);
+	cursor: pointer;
+}
+
 .buttonSelected {
 	background: #1D6154;
 	color: white;
+}
+
+.buttonSelected:hover {
+	background: #1D6154;
 }
