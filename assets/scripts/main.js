@@ -6,13 +6,14 @@ const categories = "http://localhost:5678/api/categories"
 
 
 function filterObjects() {
+    gallery.innerHTML = ""
     fetch(works).then((response) => {
         response.json().then((data) => {
             const categoryFilter = data.filter(function (data) {
                 return data.categoryId == 1
             })
             console.log(categoryFilter)
-            categoryFilter.forEach(e => {                     
+            categoryFilter.forEach(e => {
                 const newFigure = document.createElement("figure")
                 const newImage = document.createElement("img")
                 const NewCaption = document.createElement("figcaption")
@@ -27,6 +28,7 @@ function filterObjects() {
 }
 
 function filterAppartments() {
+    gallery.innerHTML = ""
     fetch(works).then((response) => {
         response.json().then((data) => {
             const categoryFilter = data.filter(function (data) {
@@ -48,6 +50,7 @@ function filterAppartments() {
 }
 
 function filterHotels() {
+    gallery.innerHTML = ""
     fetch(works).then((response) => {
         response.json().then((data) => {
             const categoryFilter = data.filter(function (data) {
@@ -69,6 +72,7 @@ function filterHotels() {
 }
 
 function removeAllFilters() {
+    gallery.innerHTML = ""
     fetch(works).then((response) => {
         response.json().then((data) => {
             const categoryFilter = data.filter(function (data) {
@@ -86,8 +90,16 @@ function addFilterTous() {
     filterTous.innerText = "Tous"
 }
 
+
 function portfolioFilters() {
     addFilterTous()
+    const filterTous = document.querySelector(".tous")
+    filterTous.addEventListener('click', () => {
+        document.querySelector(".buttonSelected").classList.remove("buttonSelected")
+        filterTous.classList.add("buttonSelected")
+        removeAllFilters()
+        portfolioGallery()
+    })
     fetch(categories).then((response) => {
         response.json().then((data) => {
             data.forEach(e => {
@@ -113,32 +125,27 @@ function portfolioFilters() {
                         newFilter.classList.add("buttonSelected")
                         filterHotels()
                     })
-                } const filterTous = document.querySelector(".tous")
-                filterTous.addEventListener('click', () => {
-                    document.querySelector(".buttonSelected").classList.remove("buttonSelected")
-                    filterTous.classList.add("buttonSelected")
-                    removeAllFilters()
-                })
+                }
             })
         })
     })
 }
 
 function portfolioGallery() {
-        fetch(works).then((response) => {
-            response.json().then((data) => {
-                data.forEach(e => {
-                    const newFigure = document.createElement("figure")
-                    const newImage = document.createElement("img")
-                    const NewCaption = document.createElement("figcaption")
-                    gallery.appendChild(newFigure)
-                    newFigure.appendChild(newImage)
-                    newFigure.appendChild(NewCaption)
-                    newImage.src = e.imageUrl
-                    NewCaption.innerHTML = e.title
-                })
+    fetch(works).then((response) => {
+        response.json().then((data) => {
+            data.forEach(e => {
+                const newFigure = document.createElement("figure")
+                const newImage = document.createElement("img")
+                const NewCaption = document.createElement("figcaption")
+                gallery.appendChild(newFigure)
+                newFigure.appendChild(newImage)
+                newFigure.appendChild(NewCaption)
+                newImage.src = e.imageUrl
+                NewCaption.innerHTML = e.title
             })
         })
+    })
 }
 
 
