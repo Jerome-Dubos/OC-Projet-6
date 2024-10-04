@@ -12,8 +12,7 @@ function filterObjects() {
                 return data.categoryId == 1
             })
             console.log(categoryFilter)
-            categoryFilter.forEach(e => {
-                
+            categoryFilter.forEach(e => {                     
                 const newFigure = document.createElement("figure")
                 const newImage = document.createElement("img")
                 const NewCaption = document.createElement("figcaption")
