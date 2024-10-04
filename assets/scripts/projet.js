@@ -1,10 +1,3 @@
-const filters = document.querySelector(".filters")
-const gallery = document.querySelector(".gallery")
-const works = "http://localhost:5678/api/works"
-const categories = "http://localhost:5678/api/categories"
-
-
-
 function filterObjects() {
     gallery.innerHTML = ""
     fetch(works).then((response) => {
@@ -89,7 +82,6 @@ function addFilterTous() {
     filterTous.classList.add("tous", "button", "buttonSelected")
     filterTous.innerText = "Tous"
 }
-
 
 function portfolioFilters() {
     addFilterTous()
