@@ -9,3 +9,7 @@ projets.addEventListener("click", () => {
 logo.addEventListener("click", () => {
     document.location.href = "index.html"
 })
+
+contact.addEventListener("click", () => {
+    document.location.href = "#contact"
+})
