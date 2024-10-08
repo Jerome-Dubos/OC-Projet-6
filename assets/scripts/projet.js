@@ -1,10 +1,3 @@
-let works = ""
-
-async function getWorks() {
-    const response = await fetch(worksURL)
-    return response.json()
-}
-
 async function displayWorks(data) {
     gallery.innerHTML = ""
     data.forEach(e => {
@@ -26,14 +19,6 @@ function filterWorks(categoryId) {
     displayWorks(categoryFilter)
 }
 
-async function init() {
-    works = await getWorks()
-    await displayWorks(works)
-    portfolioFilters()
-}
-
-init()
-
 function addFilterTous() {
     const filterTous = document.createElement("button")
     filters.appendChild(filterTous)
@@ -44,24 +29,36 @@ function addFilterTous() {
     })
 }
 
-function portfolioFilters() {
+function createFilters(data) {
+    categories.forEach(category => {
+        const newFilter = document.createElement("button")
+        filters.appendChild(newFilter)
+        newFilter.classList.add("button")
+        newFilter.innerText = category.name
+        newFilter.addEventListener("click", (e) => {
+            filterWorks(category.id)
+            document.querySelector(".buttonSelected").classList.remove("buttonSelected")
+            newFilter.classList.add("buttonSelected")
+        })
+    })
+}
+
+function addFilters() {
     addFilterTous()
     const filterTous = document.querySelector(".tous")
     filterTous.addEventListener('click', () => {
         document.querySelector(".buttonSelected").classList.remove("buttonSelected")
         filterTous.classList.add("buttonSelected")
     })
-    fetch(categoriesURL).then((response) => {
-        response.json().then((data) => {
-            data.forEach(category => {
-                const newFilter = document.createElement("button")
-                filters.appendChild(newFilter)
-                newFilter.classList.add("button")
-                newFilter.innerText = category.name
-                newFilter.addEventListener("click", (e) => {
-                    filterWorks(category.id)
-                })
-            })
-        })
-    })
+    createFilters()
 }
+
+async function init() {
+    works = await getWorks()
+    categories = await getCategories()
+    await displayWorks(works)
+    addFilters()
+}
+
+
+init()
