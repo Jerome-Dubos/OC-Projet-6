@@ -9,6 +9,7 @@ const categoriesURL = "http://localhost:5678/api/categories"
 let works = ""
 let categories = ""
 
+
 async function getCategories() {
     const response = await fetch(categoriesURL)
     return response.json()

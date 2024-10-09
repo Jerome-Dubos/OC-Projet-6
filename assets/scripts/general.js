@@ -1,15 +1,15 @@
 login.addEventListener("click", () => {
-    document.location.href = "login.html"
+    document.location = "login.html"
 })
 
 projets.addEventListener("click", () => {
-    document.location.href = "index.html"
+    document.location = "index.html"
 })
 
 logo.addEventListener("click", () => {
-    document.location.href = "index.html"
+    document.location = "index.html"
 })
 
 contact.addEventListener("click", () => {
-    document.location.href = "#contact"
+    document.location = "index.html#contact"
 })
