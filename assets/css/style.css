@@ -403,6 +403,7 @@ footer nav ul {
 
 .fa-arrow-left {
 	display: none;
+	visibility: hidden;
 	background: none;
 	color: black;
 	font-size: 20px;
@@ -457,6 +458,7 @@ footer nav ul {
 .active {
 	display: flex !important;
 	flex-direction: column;
+	visibility: visible;
 }
 
 .firstModale {

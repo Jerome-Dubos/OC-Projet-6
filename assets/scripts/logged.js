@@ -39,8 +39,6 @@ function logout() {
 
 //Gestion de la modale
 //Général modale
-arrowLeft.classList.remove("active")
-
 function cacherModale() {
     modaleBackground.classList.remove("active")
     arrowLeft.classList.remove("active")
