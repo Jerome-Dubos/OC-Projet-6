@@ -3,6 +3,7 @@ const tokenAdmin = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI
 const header = document.querySelector("header")
 const editionIcon = `<i class="fa-solid fa-pen-to-square"></i>`
 const banner = document.querySelector(".banner")
+const mesProjets = document.querySelector(".mesProjets")
 
 
 if (tokenConnected == tokenAdmin) {
@@ -26,7 +27,7 @@ function createBannerLoggedIn() {
     const textBanner = document.createElement("p")
     bannerLoggedIn.classList.add("edit")
     bannerLoggedIn.innerHTML = `${editionIcon}Mode édition`
-    var insertedNode = header.insertBefore(bannerLoggedIn, banner);
+    let insertedNode = header.insertBefore(bannerLoggedIn, banner)
     bannerLoggedIn.appendChild(textBanner)
 }
 
@@ -34,7 +35,7 @@ function createModifierButton() {
     const modifierButton = document.createElement("p")
     modifierButton.classList.add("modifier")
     modifierButton.innerHTML = `${editionIcon}Modifier`
-    filters.appendChild(modifierButton)
+    mesProjets.appendChild(modifierButton)
     modifierButton.addEventListener("click", () => {
         openModale()
     })

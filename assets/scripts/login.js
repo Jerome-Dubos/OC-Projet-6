@@ -11,14 +11,14 @@ function ajoutListenerLogin() {
             email: email.value,
             password: password.value
         }
-        const chargeUtile = JSON.stringify(connexionUser)
+        const log = JSON.stringify(connexionUser)
         fetch("http://localhost:5678/api/users/login/", {
             method: "POST",
             headers: {
                 "accept": "application/json",
                 "Content-Type": "application/json"
             },
-            body: chargeUtile
+            body: log
         }).then(function (response) {
             let status = response.status
             if (status == 200) {
@@ -33,12 +33,11 @@ function ajoutListenerLogin() {
     })
 }
 
-
 function errorLogin(champ) {
     const errorMessage = document.createElement("p")
-    errorMessage.classList.add("test")
     formLogin.appendChild(errorMessage)
     errorMessage.innerHTML = `Votre ${champ} est incorrect. Veuillez réessayer.`
+    setTimeout(() => {errorMessage.innerHTML = ""}, 3500);
 }
 
 

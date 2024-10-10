@@ -52,4 +52,19 @@ form p {
     text-align: center;
     font-size: 13px;
     color: red;
+    animation: show-hide 3s linear;
+    animation-fill-mode: forwards;
+    animation-delay: 500ms;
+}
+
+@keyframes show-hide {
+    0% {
+        opacity: 100%;
+    }
+    50% {
+        opacity: 80%;
+    }
+    100% {
+        opacity: 0%;
+    }
 }

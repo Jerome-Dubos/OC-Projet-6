@@ -349,14 +349,20 @@ footer nav ul {
 	overflow: hidden;
 }
 
-.modifier {
+.mesProjets {
 	display: flex;
 	align-items: center;
-	order: 1;
+	justify-content: center;
+	gap: 40px;
+}
+
+.modifier {
+	display: flex;
 	font-family: 'Work Sans';
 	gap: 5px;
-	margin-left: 20px;
 	padding: 0;
+	position: relative;
+	bottom: 12px;
 }
 
 .modifier:hover {
