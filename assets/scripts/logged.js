@@ -26,7 +26,7 @@ function createModifierButton() {
     mesProjets.appendChild(modifierButton)
     modifierButton.addEventListener("click", () => {
         modaleBackground.classList.add("active")
-        firtModale.classList.add("active")
+        firstModale.classList.add("active")
     })
 }
 
@@ -39,6 +39,8 @@ function logout() {
 
 //Gestion de la modale
 //Général modale
+arrowLeft.classList.remove("active")
+
 function cacherModale() {
     modaleBackground.classList.remove("active")
     arrowLeft.classList.remove("active")
@@ -52,6 +54,11 @@ modaleBackground.addEventListener("click", (event) => {
 
 closeCross.addEventListener("click", () => {
     cacherModale()
+})
+
+arrowLeft.addEventListener("click", () => {
+    arrowLeft.classList.remove("active")
+    firstModale.classList.add("active")
 })
 
 //First modale
@@ -70,7 +77,7 @@ async function displayWorksModale(data) {
 }
 
 alternativeBtn.addEventListener("click", () => {
-    firtModale.classList.remove("active")
+    firstModale.classList.remove("active")
     arrowLeft.classList.add("active")
 })
 
