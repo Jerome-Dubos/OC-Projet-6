@@ -1,18 +1,6 @@
-const tokenConnected = window.sessionStorage.getItem("token")
-const tokenAdmin = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcyODU3MDAyMCwiZXhwIjoxNzI4NjU2NDIwfQ.E8FCcdy1z4yBmQtAQW0czCAuRyZQdDa0hNKqX8x-Aa0"
-const header = document.querySelector("header")
-const editionIcon = `<i class="fa-solid fa-pen-to-square"></i>`
-const banner = document.querySelector(".banner")
-const mesProjets = document.querySelector(".mesProjets")
-
-
 if (tokenConnected == tokenAdmin) {
     interfaceLoggedIn()
     logout()
-}
-
-function openModale() {
-        console.log("coucou");
 }
 
 function interfaceLoggedIn() {
@@ -37,7 +25,7 @@ function createModifierButton() {
     modifierButton.innerHTML = `${editionIcon}Modifier`
     mesProjets.appendChild(modifierButton)
     modifierButton.addEventListener("click", () => {
-        openModale()
+        modaleBackground.classList.add("active")
     })
 }
 
@@ -47,3 +35,34 @@ function logout() {
         document.location = "index.html"
     })
 }
+
+//Gestion de la modale
+function cacherModale() {
+    modaleBackground.classList.remove("active")
+}
+
+modaleBackground.addEventListener("click", (event) => {
+    if (event.target === modaleBackground) {
+        cacherModale()
+    }
+})
+
+closeCross.addEventListener("click", () => {
+    cacherModale()
+})
+
+async function displayWorksModale(data) {
+    data.forEach(e => {
+        const newImage = document.createElement("img")
+        galleryModale.appendChild(newImage)
+        newImage.src = e.imageUrl
+    })
+}
+
+async function initModale() {
+    works = await getWorks()
+    await displayWorksModale(works)
+}
+
+initModale()
+

@@ -1,8 +1,3 @@
-const formLogin = document.querySelector(".connexion")
-const email = document.getElementById("email")
-const password = document.getElementById("password")
-
-
 function ajoutListenerLogin() {
     const formLogin = document.querySelector(".connexion")
     formLogin.addEventListener("submit", (e) => {
