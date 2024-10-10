@@ -145,8 +145,39 @@ body {
 
 header {
 	display: flex;
+	flex-direction: column;
+}
+
+header .banner{
+	display: flex;
+	flex-direction: row;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 50px;
+	margin-top: 90px;
+}
+
+.edit {
+	margin: 0;
+	background: black;
+	height: 60px;
+	color: white;
+	font-family: 'Work Sans';
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	font-size: 18px;
+	width: 100%;
+	position: absolute;
+	left: 0;
+}
+
+.edit i {
+	background-color: black;
+}
+
+header .editDeleted {
+	margin-top: 50px;
 }
 
 section {
@@ -236,7 +267,6 @@ li:hover {
 
 .gallery img {
 	width: 100%;
-
 }
 
 #contact {
@@ -315,6 +345,23 @@ footer nav ul {
 	font-family: 'Syne';
 	font-weight: 700;
 	min-width: 100px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.modifier {
+	display: flex;
+	align-items: center;
+	order: 1;
+	font-family: 'Work Sans';
+	gap: 5px;
+	margin-left: 20px;
+	padding: 0;
+}
+
+.modifier:hover {
+	cursor: pointer;
+	text-decoration: underline;
 }
 
 .button:hover {
