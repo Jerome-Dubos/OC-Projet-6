@@ -390,36 +390,50 @@ footer nav ul {
 	display: none;
 	position: fixed;
 	top: 0;
+	left: 0;
 	height: 100vh;
 	width: 100vw;
 	background-color: rgba(0, 0, 0, 0.7);
 }
 
-.fa-x {
-	position: absolute;
-	right: 15px;
-	top: 15px;
+.modale nav {
+	display: flex;
+	justify-content: space-between;
+}
+
+.fa-arrow-left{
+	display: none;
+	background: none;
+	color: black;
 	font-size: 20px;
 	cursor: pointer;
 }
 
-.fa-x:hover {
-	animation: grow 2s linear;
-	animation-fill-mode: forwards;
+.fa-x {
+	position: absolute;
+	right: 15px;
+	font-size: 20px;
+	cursor: pointer;
 }
 
-@keyframes grow {
-	0% {
-		scale: 1;
-	}
+.bin {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	background: black;
+	width: 20px;
+	height: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 2px;
+	cursor: pointer;
+}
 
-	50% {
-		scale: 1.5;
-	}
-
-	100% {
-		scale: 1;
-	}
+.fa-trash-can {
+	background: none;
+	color: white;
+	font-size: 12px;
 }
 
 .modale {
@@ -430,7 +444,7 @@ footer nav ul {
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-	width: 50%;
+	width: 30%;
 	padding: 20px;
 	text-align: center;
 	color: black;
@@ -442,12 +456,18 @@ footer nav ul {
 
 .active {
 	display: flex !important;
+	flex-direction: column;
+}
+
+.firtModale {
+	display: none;
 }
 
 .modale .titleModale {
 	font-family: 'Work Sans';
 	font-size: 26px;
 	margin-bottom: 30px;
+	margin-top: 20px;
 }
 
 .galleryModale {
@@ -459,9 +479,13 @@ footer nav ul {
 	padding-bottom: 50px;
 	border-bottom: 1px solid #B3B3B3;
 }
+.modale figure {
+	width: 20%;
+	position: relative;
+}
 
 .modale img {
-	width: 20%;
+	width: 100%;
 }
 
 .alternativeBtn {

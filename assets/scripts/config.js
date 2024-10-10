@@ -14,10 +14,14 @@ const tokenConnected = window.sessionStorage.getItem("token")
 const tokenAdmin = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcyODU3MDAyMCwiZXhwIjoxNzI4NjU2NDIwfQ.E8FCcdy1z4yBmQtAQW0czCAuRyZQdDa0hNKqX8x-Aa0"
 const header = document.querySelector("header")
 const editionIcon = `<i class="fa-solid fa-pen-to-square"></i>`
+const deleteIcon = `<i class="fa-solid fa-trash-can"></i>`
 const banner = document.querySelector(".banner")
 const mesProjets = document.querySelector(".mesProjets")
 const modaleBackground = document.querySelector(".modaleBackground")
 const closeCross = document.querySelector(".fa-x")
+const alternativeBtn = document.querySelector(".alternativeBtn")
+const firtModale = document.querySelector(".firtModale")
+const arrowLeft = document.querySelector(".fa-arrow-left")
 let works = ""
 let categories = ""
 

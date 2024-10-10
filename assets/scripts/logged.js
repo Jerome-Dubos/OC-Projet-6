@@ -26,6 +26,7 @@ function createModifierButton() {
     mesProjets.appendChild(modifierButton)
     modifierButton.addEventListener("click", () => {
         modaleBackground.classList.add("active")
+        firtModale.classList.add("active")
     })
 }
 
@@ -37,8 +38,10 @@ function logout() {
 }
 
 //Gestion de la modale
+//Général modale
 function cacherModale() {
     modaleBackground.classList.remove("active")
+    arrowLeft.classList.remove("active")
 }
 
 modaleBackground.addEventListener("click", (event) => {
@@ -51,18 +54,30 @@ closeCross.addEventListener("click", () => {
     cacherModale()
 })
 
+//First modale
 async function displayWorksModale(data) {
     data.forEach(e => {
+        const newFigure = document.createElement("figure")
         const newImage = document.createElement("img")
-        galleryModale.appendChild(newImage)
+        const newIcon = document.createElement("div")
+        newIcon.classList.add("bin")
+        galleryModale.appendChild(newFigure)
+        newFigure.appendChild(newImage)
+        newFigure.appendChild(newIcon)
         newImage.src = e.imageUrl
+        newIcon.innerHTML = deleteIcon
     })
 }
 
-async function initModale() {
+alternativeBtn.addEventListener("click", () => {
+    firtModale.classList.remove("active")
+    arrowLeft.classList.add("active")
+})
+
+async function initFirstModale() {
     works = await getWorks()
     await displayWorksModale(works)
 }
 
-initModale()
+initFirstModale()
 
