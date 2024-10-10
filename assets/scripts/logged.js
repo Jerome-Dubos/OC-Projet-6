@@ -16,7 +16,7 @@ function openModale() {
 }
 
 function interfaceLoggedIn() {
-    login.innerHTML = "Logout"
+    login.innerHTML = "logout"
     banner.classList.remove("editDeleted")
     createBannerLoggedIn()
     createModifierButton()
