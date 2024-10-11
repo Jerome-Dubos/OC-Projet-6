@@ -22,6 +22,7 @@ const closeCross = document.querySelector(".fa-x")
 const alternativeBtn = document.querySelector(".alternativeBtn")
 const firstModale = document.querySelector(".firstModale")
 const arrowLeft = document.querySelector(".fa-arrow-left")
+const secondModale = document.querySelector(".secondModale")
 let works = ""
 let categories = ""
 

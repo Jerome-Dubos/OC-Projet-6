@@ -42,6 +42,7 @@ function logout() {
 function cacherModale() {
     modaleBackground.classList.remove("active")
     arrowLeft.classList.remove("active")
+    secondModale.classList.remove("active")
 }
 
 modaleBackground.addEventListener("click", (event) => {
@@ -56,6 +57,7 @@ closeCross.addEventListener("click", () => {
 
 arrowLeft.addEventListener("click", () => {
     arrowLeft.classList.remove("active")
+    secondModale.classList.remove("active")
     firstModale.classList.add("active")
 })
 
@@ -76,6 +78,7 @@ async function displayWorksModale(data) {
 
 alternativeBtn.addEventListener("click", () => {
     firstModale.classList.remove("active")
+    secondModale.classList.add("active")
     arrowLeft.classList.add("active")
 })
 

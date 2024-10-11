@@ -87,12 +87,36 @@
 				<i class="fa-solid fa-x"></i>
 			</nav>
 			<div class="firstModale">
-			<div class="titleModale">
-				<h3>Galerie photo</h3>
-			</div>
+				<div class="titleModale">
+					<h3>Galerie photo</h3>
+				</div>
 				<div class="galleryModale">
 				</div>
 				<button class="alternativeBtn">Ajouter une photo</button>
+			</div>
+			<div class="secondModale">
+				<div class="titleModale">
+					<h3>Ajout photo</h3>
+				</div>
+				<div class="formModale">
+					<form class="form">
+						<div class="filePhoto">
+							<i class="fa-regular fa-image"></i>
+							<label for="myfile" class="btnFile">+ Ajouter photo</label>
+							<input type="file" name="myfile" accept=".png, .jpg" id="myfile">
+							<p>jpg, png : 4mo max</p>
+						</div>
+						<label for="titre">Titre</label>
+						<input type="text" name="titre" id="titre">
+						<label for="category">Catégorie</label>
+						<select name="category" id="category">
+							<option value="" selected></option>
+							<option value="categorie">Categorie test</option>
+						</select>
+						<div class="line"></div>
+						<button>Valider</button>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>

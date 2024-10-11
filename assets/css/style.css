@@ -445,7 +445,7 @@ footer nav ul {
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-	width: 30%;
+	width: 35%;
 	padding: 20px;
 	text-align: center;
 	color: black;
@@ -462,6 +462,10 @@ footer nav ul {
 }
 
 .firstModale {
+	display: none;
+}
+
+.secondModale {
 	display: none;
 }
 
@@ -500,6 +504,7 @@ footer nav ul {
 	margin-bottom: 10px;
 	padding: 5px;
 	width: 50%;
+	height: 36px;
 	text-align: center;
 	border-radius: 60px;
 	border: none;
@@ -508,4 +513,91 @@ footer nav ul {
 .alternativeBtn:hover {
 	background: #0E2F28;
 	cursor: pointer;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	align-items: center;
+}
+
+.filePhoto {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 15px;
+	width: 67%;
+	background-color: #E8F1F6;
+}
+
+.filePhoto p {
+	background: inherit;
+	font-family: 'Work Sans';
+	font-size: 10px;
+	font-weight: 400;
+	margin-top: 10px;
+}
+
+.filePhoto i {
+	background: none;
+	color: #B9C5CC;
+	font-size: 70px;
+	margin-bottom: 10px;
+}
+
+#myfile {
+	display: none;
+}
+
+.btnFile {
+	width: 173px;
+	height: 36px;
+	border-radius: 50px;
+	background: #CBD6DC;
+	color: #306685;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Work Sans';
+	font-size: 14px;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.form input,
+.form select {
+	width: 67%;
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.form .line {
+	margin-top: 30px;
+	margin-bottom: 20px;
+	width: 67%;
+	border-bottom: 1px solid #B3B3B3;
+}
+
+.form button {
+	width: 38%;
+	background: #A7A7A7;
+	color: white;
+	height: 36px;
+	font-size: 14px;
+	cursor: default;
+	border: none;
+	border-radius: 60px;
+}
+
+.activeBtn {
+	background: #1D6154 !important;
+	cursor: pointer !important;
+}
+
+.activeBtn:hover {
+	background: #0E2F28 !important;
 }
