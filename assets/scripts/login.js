@@ -32,9 +32,8 @@ function errorLogin(champ) {
     const errorMessage = document.createElement("p")
     formLogin.appendChild(errorMessage)
     errorMessage.innerHTML = `Votre ${champ} est incorrect. Veuillez réessayer.`
-    setTimeout(() => {errorMessage.innerHTML = ""}, 3500);
+    setTimeout(() => {formLogin.removeChild(errorMessage)}, 3500);
 }
-
 
 
 ajoutListenerLogin()

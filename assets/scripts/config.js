@@ -23,6 +23,11 @@ const alternativeBtn = document.querySelector(".alternativeBtn")
 const firstModale = document.querySelector(".firstModale")
 const arrowLeft = document.querySelector(".fa-arrow-left")
 const secondModale = document.querySelector(".secondModale")
+const titlePhoto = document.getElementById("titre")
+const categoryPhoto = document.getElementById("category")
+const validatePhoto = document.querySelector(".secondModale button")
+const formModale = document.querySelector(".secondModale .form")
+const myFile = document.getElementById("myFile")
 let works = ""
 let categories = ""
 

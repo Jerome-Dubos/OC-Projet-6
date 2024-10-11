@@ -520,6 +520,7 @@ footer nav ul {
 	flex-direction: column;
 	gap: 10px;
 	align-items: center;
+	padding-bottom: 0;
 }
 
 .filePhoto {
@@ -547,7 +548,7 @@ footer nav ul {
 	margin-bottom: 10px;
 }
 
-#myfile {
+#myFile {
 	display: none;
 }
 
@@ -578,7 +579,7 @@ footer nav ul {
 .form .line {
 	margin-top: 30px;
 	margin-bottom: 20px;
-	width: 67%;
+	width: 99%;
 	border-bottom: 1px solid #B3B3B3;
 }
 
@@ -600,4 +601,24 @@ footer nav ul {
 
 .activeBtn:hover {
 	background: #0E2F28 !important;
+}
+
+.errorMessage {
+	color: red;
+	font-size: 13px;
+	animation: show-hide 3s linear;
+    animation-fill-mode: forwards;
+    animation-delay: 500ms;
+}
+
+@keyframes show-hide {
+    0% {
+        opacity: 100%;
+    }
+    50% {
+        opacity: 80%;
+    }
+    100% {
+        opacity: 0%;
+    }
 }

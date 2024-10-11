@@ -73,6 +73,15 @@ async function displayWorksModale(data) {
         newFigure.appendChild(newIcon)
         newImage.src = e.imageUrl
         newIcon.innerHTML = deleteIcon
+        let figures = []
+        figures.push(newFigure)
+        newIcon.addEventListener('click', (event) => {
+            console.log(figures[0]);
+            // fetch(`http://localhost:5678/api/works/${figures[0]}`, {
+            //     method: "DELETE",
+            //     headers: "accept: */*",
+            // })
+        })
     })
 }
 
@@ -89,3 +98,42 @@ async function initFirstModale() {
 
 initFirstModale()
 
+//SecondModale
+async function displayCategories(data) {
+    data.forEach(e => {
+        const newOption = document.createElement("option")
+        newOption.value = e.name
+        newOption.innerText = e.name
+        categoryPhoto.appendChild(newOption)
+    })
+}
+
+async function initSecondModale() {
+    categories = await getCategories()
+    await displayCategories(categories)
+}
+
+initSecondModale()
+
+validatePhoto.addEventListener("click", (e) => {
+    e.preventDefault()
+    if (titlePhoto.value !== "" && (categoryPhoto.value !== "")) {
+        console.log("marche");
+    }else errorAddPhoto()
+})
+
+function errorAddPhoto() {
+    const errorMessage = document.createElement("p")
+    errorMessage.classList.add("errorMessage")
+    formModale.appendChild(errorMessage)
+    errorMessage.innerHTML = "Vous avez oublié de remplir un ou plusieurs champ. Veuillez recommencer."
+    setTimeout(() => { formModale.removeChild(errorMessage) }, 3500);
+}
+
+categoryPhoto.addEventListener("change", () => {
+    if (titlePhoto.value !== "" && (categoryPhoto.value !== "")) {
+        validatePhoto.classList.add("activeBtn")
+    } else {
+        validatePhoto.classList.remove("activeBtn")
+    }
+})
