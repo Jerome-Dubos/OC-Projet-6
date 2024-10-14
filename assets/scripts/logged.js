@@ -1,4 +1,4 @@
-if (tokenConnected == tokenAdmin) {
+if (tokenConnected !== null) {
     interfaceLoggedIn()
     logout()
 }
@@ -15,7 +15,7 @@ function createBannerLoggedIn() {
     const textBanner = document.createElement("p")
     bannerLoggedIn.classList.add("edit")
     bannerLoggedIn.innerHTML = `${editionIcon}Mode édition`
-    let insertedNode = header.insertBefore(bannerLoggedIn, banner)
+    header.insertBefore(bannerLoggedIn, banner)
     bannerLoggedIn.appendChild(textBanner)
 }
 
@@ -63,6 +63,7 @@ arrowLeft.addEventListener("click", () => {
 
 //First modale
 async function displayWorksModale(data) {
+    galleryModale.innerHTML = ""
     data.forEach(e => {
         const newFigure = document.createElement("figure")
         const newImage = document.createElement("img")
@@ -73,14 +74,14 @@ async function displayWorksModale(data) {
         newFigure.appendChild(newIcon)
         newImage.src = e.imageUrl
         newIcon.innerHTML = deleteIcon
-        let figures = []
-        figures.push(newFigure)
         newIcon.addEventListener('click', (event) => {
-            console.log(figures[0]);
-            // fetch(`http://localhost:5678/api/works/${figures[0]}`, {
-            //     method: "DELETE",
-            //     headers: "accept: */*",
-            // })
+            fetch(`http://localhost:5678/api/works/${e.id}`, {
+                method: "DELETE",
+                headers: {
+                    Authorization: "Bearer " + tokenConnected
+                }
+            })
+            initFirstModale()
         })
     })
 }
@@ -99,6 +100,57 @@ async function initFirstModale() {
 initFirstModale()
 
 //SecondModale
+validatePhoto.addEventListener("click", (e) => {
+    e.preventDefault()
+    if (titlePhoto.value !== "" && (categoryPhoto.value !== "")) {
+        cacherModale()
+        cleanForm()
+        displayWorks(works)
+    } else errorAddPhoto()
+})
+
+function cleanForm() {
+    titlePhoto.value = ""
+    categoryPhoto.value = ""
+}
+
+function showPhoto() {
+    let photo = document.querySelector("input[type=file").files[0]
+    let newPhoto = document.createElement("img")
+    newPhoto.src = photo.src
+    seePhoto.innerHTML = ""
+    seePhoto.appendChild(newPhoto)
+    console.log(photo);
+}
+
+function errorAddPhoto() {
+    const errorMessage = document.createElement("p")
+    errorMessage.classList.add("errorMessage")
+    formModale.appendChild(errorMessage)
+    errorMessage.innerHTML = "Vous avez oublié de remplir un ou plusieurs champ. Veuillez recommencer."
+    setTimeout(() => { formModale.removeChild(errorMessage) }, 3500);
+}
+
+myFile.addEventListener("change", () => {
+    showPhoto()    
+})
+
+function validationForm() {
+    if (titlePhoto.value !== "" && (categoryPhoto.value !== "")) {
+        validatePhoto.classList.add("activeBtn")
+    } else {
+        validatePhoto.classList.remove("activeBtn")
+    }
+}
+
+titlePhoto.addEventListener("change", () => {
+    validationForm()
+})
+
+categoryPhoto.addEventListener("change", () => {
+    validationForm()
+})
+
 async function displayCategories(data) {
     data.forEach(e => {
         const newOption = document.createElement("option")
@@ -114,26 +166,3 @@ async function initSecondModale() {
 }
 
 initSecondModale()
-
-validatePhoto.addEventListener("click", (e) => {
-    e.preventDefault()
-    if (titlePhoto.value !== "" && (categoryPhoto.value !== "")) {
-        console.log("marche");
-    }else errorAddPhoto()
-})
-
-function errorAddPhoto() {
-    const errorMessage = document.createElement("p")
-    errorMessage.classList.add("errorMessage")
-    formModale.appendChild(errorMessage)
-    errorMessage.innerHTML = "Vous avez oublié de remplir un ou plusieurs champ. Veuillez recommencer."
-    setTimeout(() => { formModale.removeChild(errorMessage) }, 3500);
-}
-
-categoryPhoto.addEventListener("change", () => {
-    if (titlePhoto.value !== "" && (categoryPhoto.value !== "")) {
-        validatePhoto.classList.add("activeBtn")
-    } else {
-        validatePhoto.classList.remove("activeBtn")
-    }
-})

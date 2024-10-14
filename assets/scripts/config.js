@@ -11,7 +11,6 @@ const formLogin = document.querySelector(".connexion")
 const email = document.getElementById("email")
 const password = document.getElementById("password")
 const tokenConnected = window.sessionStorage.getItem("token")
-const tokenAdmin = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcyODU3MDAyMCwiZXhwIjoxNzI4NjU2NDIwfQ.E8FCcdy1z4yBmQtAQW0czCAuRyZQdDa0hNKqX8x-Aa0"
 const header = document.querySelector("header")
 const editionIcon = `<i class="fa-solid fa-pen-to-square"></i>`
 const deleteIcon = `<i class="fa-solid fa-trash-can"></i>`
@@ -27,6 +26,7 @@ const titlePhoto = document.getElementById("titre")
 const categoryPhoto = document.getElementById("category")
 const validatePhoto = document.querySelector(".secondModale button")
 const formModale = document.querySelector(".secondModale .form")
+const seePhoto = document.querySelector(".filePhoto")
 const myFile = document.getElementById("myFile")
 let works = ""
 let categories = ""
