@@ -82,6 +82,7 @@ async function displayWorksModale(data) {
                 }
             })
             initFirstModale()
+            displayWorks(works)
         })
     })
 }
@@ -100,27 +101,76 @@ async function initFirstModale() {
 initFirstModale()
 
 //SecondModale
-validatePhoto.addEventListener("click", (e) => {
+formModale.addEventListener("submit", (e) => {
     e.preventDefault()
     if (titlePhoto.value !== "" && (categoryPhoto.value !== "")) {
-        cacherModale()
-        cleanForm()
-        displayWorks(works)
+        addProject()
     } else errorAddPhoto()
 })
 
+function addProject() {
+    const formData = new FormData(formModale)
+    let photo = document.querySelector("input[type=file").files[0]
+    let newPhoto = document.createElement("img")
+    newPhoto.src = window.URL.createObjectURL(photo)
+    const imageURL = newPhoto.src
+    const title = formData.get("titre")
+    const categoryId = formData.get("category")
+    const newProject = { imageURL, title, categoryId: Number(categoryId)}
+    const newProjectString = JSON.stringify(newProject)
+    console.log(newProjectString);
+    fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        headers: {
+            "accept": "application/json",
+            "Content-Type": "multipart/form-data",
+            Authorization: "Bearer " + tokenConnected
+        },
+        body: newProjectString
+    }).then(function (response) {
+        let status = response.status
+        if (status == 201) {
+            cacherModale()
+            cleanForm()
+            displayWorks(works)
+            console.log("Réussite");
+        } if (status == 400) {
+            errorAddProject()
+            console.log("Bad request");
+        } if (status == 401) {
+            errorAddProject()
+            console.log("Unauthorized");
+        } if (status == 500) {
+            errorAddProject()
+            console.log("Unexpected Error");
+        }
+    })
+}
+
+function errorAddProject() {
+    const errorMessage = document.createElement("p")
+    errorMessage.classList.add("errorMessage")
+    formModale.appendChild(errorMessage)
+    errorMessage.innerHTML = "Une erreur est survenue."
+    setTimeout(() => { formModale.removeChild(errorMessage) }, 3500);
+}
+
 function cleanForm() {
-    titlePhoto.value = ""
-    categoryPhoto.value = ""
+    formModale.reset()
+    const baseForm = `<i class="fa-regular fa-image"></i>
+		            <label for="myFile" class="btnFile">+ Ajouter photo</label>
+		            <input type="file" name="myfile" accept=".png, .jpg" id="myFile">
+		            <p>jpg, png : 4mo max</p>`
+    seePhoto.innerHTML = baseForm
 }
 
 function showPhoto() {
     let photo = document.querySelector("input[type=file").files[0]
     let newPhoto = document.createElement("img")
-    newPhoto.src = photo.src
-    seePhoto.innerHTML = ""
+    newPhoto.setAttribute("name", "photo")
+    newPhoto.src = window.URL.createObjectURL(photo)
+    myFileDiv.classList.add("hidden")
     seePhoto.appendChild(newPhoto)
-    console.log(photo);
 }
 
 function errorAddPhoto() {
@@ -132,7 +182,7 @@ function errorAddPhoto() {
 }
 
 myFile.addEventListener("change", () => {
-    showPhoto()    
+    showPhoto()
 })
 
 function validationForm() {
@@ -154,7 +204,7 @@ categoryPhoto.addEventListener("change", () => {
 async function displayCategories(data) {
     data.forEach(e => {
         const newOption = document.createElement("option")
-        newOption.value = e.name
+        newOption.value = e.id
         newOption.innerText = e.name
         categoryPhoto.appendChild(newOption)
     })

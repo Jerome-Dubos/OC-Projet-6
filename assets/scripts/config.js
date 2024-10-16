@@ -26,6 +26,7 @@ const titlePhoto = document.getElementById("titre")
 const categoryPhoto = document.getElementById("category")
 const validatePhoto = document.querySelector(".secondModale button")
 const formModale = document.querySelector(".secondModale .form")
+const myFileDiv = document.querySelector(".myFile")
 const seePhoto = document.querySelector(".filePhoto")
 const myFile = document.getElementById("myFile")
 let works = ""
