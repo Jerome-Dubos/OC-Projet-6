@@ -133,6 +133,7 @@ function addProject() {
             cacherModale()
             cleanForm()
             displayWorks(works)
+            initFirstModale()
             console.log("Réussite");
         } if (status == 400) {
             errorAddProject()
