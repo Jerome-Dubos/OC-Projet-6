@@ -1,3 +1,5 @@
+const portfolio = document.getElementById("portfolio")
+const navFilters = document.querySelector("#portfolio nav")
 const galleryModale = document.querySelector(".galleryModale")
 const tokenConnected = window.sessionStorage.getItem("token")
 const header = document.querySelector("header")
@@ -27,6 +29,7 @@ if (tokenConnected !== null) {
 function interfaceLoggedIn() {
     login.innerHTML = "logout"
     banner.classList.remove("editDeleted")
+    portfolio.removeChild(navFilters)
     createBannerLoggedIn()
     createModifierButton()
 }
