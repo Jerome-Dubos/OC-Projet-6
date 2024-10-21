@@ -103,8 +103,8 @@ async function displayWorksModale(data) {
                 }
             })
             initFirstModale()
-            displayWorks(works)
         })
+        displayWorks(works)
     })
 }
 
