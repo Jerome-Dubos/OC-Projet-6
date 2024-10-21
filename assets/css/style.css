@@ -494,6 +494,7 @@ footer nav ul {
 
 .modale img {
 	width: 100%;
+	max-height: 140px;
 }
 
 .alternativeBtn {
