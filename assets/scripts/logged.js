@@ -1,3 +1,24 @@
+const galleryModale = document.querySelector(".galleryModale")
+const tokenConnected = window.sessionStorage.getItem("token")
+const header = document.querySelector("header")
+const editionIcon = `<i class="fa-solid fa-pen-to-square"></i>`
+const deleteIcon = `<i class="fa-solid fa-trash-can"></i>`
+const banner = document.querySelector(".banner")
+const mesProjets = document.querySelector(".mesProjets")
+const modaleBackground = document.querySelector(".modaleBackground")
+const closeCross = document.querySelector(".fa-x")
+const alternativeBtn = document.querySelector(".alternativeBtn")
+const firstModale = document.querySelector(".firstModale")
+const arrowLeft = document.querySelector(".fa-arrow-left")
+const secondModale = document.querySelector(".secondModale")
+const titlePhoto = document.getElementById("titre")
+const categoryPhoto = document.getElementById("category")
+const validatePhoto = document.querySelector(".secondModale button")
+const formModale = document.querySelector(".secondModale .form")
+const myFileDiv = document.querySelector(".myFile")
+const seePhoto = document.querySelector(".filePhoto")
+const myFile = document.getElementById("myFile")
+
 if (tokenConnected !== null) {
     interfaceLoggedIn()
     logout()
@@ -109,41 +130,32 @@ formModale.addEventListener("submit", (e) => {
 })
 
 function addProject() {
-    const formData = new FormData(formModale)
+    const formData = new FormData()
     let photo = document.querySelector("input[type=file").files[0]
-    let newPhoto = document.createElement("img")
-    newPhoto.src = window.URL.createObjectURL(photo)
-    const imageURL = newPhoto.src
-    const title = formData.get("titre")
-    const categoryId = formData.get("category")
-    const newProject = { imageURL, title, categoryId: Number(categoryId)}
-    const newProjectString = JSON.stringify(newProject)
-    console.log(newProjectString);
+    formData.append("image", photo)
+    formData.append("title", document.getElementById("titre").value)
+    formData.append("category", document.getElementById("category").value)
     fetch("http://localhost:5678/api/works", {
         method: "POST",
         headers: {
             "accept": "application/json",
-            "Content-Type": "multipart/form-data",
             Authorization: "Bearer " + tokenConnected
         },
-        body: newProjectString
-    }).then(function (response) {
+        body: formData
+    }).then(async function (response) {
         let status = response.status
         if (status == 201) {
             cacherModale()
             cleanForm()
+            works = await getWorks()
             displayWorks(works)
             initFirstModale()
-            console.log("Réussite");
         } if (status == 400) {
             errorAddProject()
-            console.log("Bad request");
         } if (status == 401) {
             errorAddProject()
-            console.log("Unauthorized");
         } if (status == 500) {
             errorAddProject()
-            console.log("Unexpected Error");
         }
     })
 }

@@ -1,3 +1,7 @@
+const formLogin = document.querySelector(".connexion")
+const email = document.getElementById("email")
+const password = document.getElementById("password")
+
 function initLogin() {
     const formLogin = document.querySelector(".connexion")
     formLogin.addEventListener("submit", (e) => {

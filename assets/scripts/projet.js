@@ -1,3 +1,5 @@
+const filters = document.querySelector(".filters")
+
 async function displayWorks(data) {
     gallery.innerHTML = ""
     data.forEach(e => {
